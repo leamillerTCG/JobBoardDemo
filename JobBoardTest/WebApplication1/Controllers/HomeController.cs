@@ -3,21 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.DataLayer;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly JobRepository jobRepository;
+        
+        public HomeController()
+        {
+            jobboardEntities context = new jobboardEntities();
+            jobRepository = new JobRepository(context);
+        }
+
         public ActionResult Index()
         {
+
             JobListModel model = new JobListModel();
-            model.Jobs = new List<Job>
-            {
-                new Job { JobId = 1, Description = "desc 1", Title = "title 1" },
-                new Job { JobId = 2, Description = "desc 2", Title = "title 2" },
-                new Job { JobId = 3, Description = "desc 3", Title = "title 3" }
-            };
+            model.Jobs = jobRepository.GetJobListing()
+                .Select(x => new Models.Job
+                {
+                    Description = x.JobDescription,
+                    JobId = x.jobid,
+                    Title = x.JobTitle
+                }).ToList();
+
+
             return View(model);
         }
 
