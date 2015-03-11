@@ -51,6 +51,28 @@ namespace WebApplication1.DataLayer
 
         #region Create Methods
 
+        public bool CreateJob(string jobTitle, string jobDescription)
+        {
+            Job job = new Job()
+            {
+                JobTitle = jobTitle
+                , JobDescription = jobDescription
+            };
+
+            try
+            {
+                _dbContext.Jobs.Add(job);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch
+            {
+
+            }
+
+            return false;
+        }
+
         #endregion
 
 
