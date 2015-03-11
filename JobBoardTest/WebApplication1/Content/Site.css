@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 120px;
     padding-bottom: 20px;
 }
 
@@ -24,7 +24,7 @@ textarea {
 }
 
 .navbar-header {
-    height: 50px;
+    height: 110px;
 }
 
 .logo {
