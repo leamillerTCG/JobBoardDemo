@@ -1,0 +1,38 @@
+﻿
+
+@{
+    ViewBag.Title = "Create a Job";
+}
+
+@using (Html.BeginForm("CreateJob", "Home", FormMethod.Post))
+{ 
+    <h2>Create a Job</h2>
+
+    <div class="row">
+        <div class="col-md-3">
+            Job Title
+        </div>
+        <div class="col-md-9">
+            <input type="text" name="JobTitle" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            Job Description
+        </div>
+        <div class="col-md-9">
+            <textarea name="JobDescription" rows="6"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-9">
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+
+}
+
+
