@@ -93,9 +93,9 @@ namespace WebApplication1.Controllers
             
             // Save the Job
             
-            bool bSaved = jobRepository.CreateJob(JobTitle,JobDescription);
-         
-            if (bSaved)
+            WebApplication1.DataLayer.Job _job = jobRepository.CreateJob(JobTitle,JobDescription);
+
+            if (_job != null)
                 ViewBag.Message = "Succeeded";
             else
                 ViewBag.Message = "Failed";

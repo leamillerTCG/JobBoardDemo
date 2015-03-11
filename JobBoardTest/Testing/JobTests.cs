@@ -34,7 +34,29 @@ namespace Testing
             string title = "Test Title";
             string description = "Test Description";
 
-            Assert.IsTrue(jobRepository.CreateJob(title, description));
+            Assert.IsNotNull(jobRepository.CreateJob(title, description));
+
+            //Assert.IsTrue(jobRepository.CreateJob(title, description));
+        }
+
+        [TestMethod]
+        public void DeleteJobSuccess()
+        {
+            jobboardEntities dbContext = new jobboardEntities();
+            
+            JobRepository jobRepository = new JobRepository(dbContext);
+
+            string title = "Test Title - Delete";
+            string description = "Test Description - Delete";
+            Job j = jobRepository.CreateJob(title, description);
+            int jobid = j.jobid;
+
+            //Assert.IsTrue(jobRepository.DeleteJob(j.jobid));
+
+            jobRepository.DeleteJob(j.jobid);
+
+            Assert.IsNull(jobRepository.GetJob(jobid));
+
         }
     }
 }
