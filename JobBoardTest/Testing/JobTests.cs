@@ -1,7 +1,8 @@
 ﻿#region using
 
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
 using WebApplication1.DataLayer;
 
 #endregion
@@ -12,13 +13,15 @@ namespace Testing
     public class JobTests
     {
         [TestMethod]
-        public void GetJobsSuccess()
+        public void GetJobListsSuccess()
         {
             jobboardEntities dbContext = new jobboardEntities();
 
             JobRepository jobRepository = new JobRepository(dbContext);
 
-            var x = jobRepository.GetJobListing();
+            List<Job> jobs = jobRepository.GetJobListing();
+
+            Assert.IsNotNull(jobs);
         }
     }
 }
