@@ -8,7 +8,7 @@ ViewBag.Title = "Home Page";
 
 
 <div class="jumbotron">
-    <p class="lead">A Sample Home Page.</p>
+    <p class="lead underline-text">A Sample Home Page.</p>
     <p><a class="btn btn-primary btn-lg">View Jobs &raquo;</a></p>
   <a class="btn btn-primary btn-lg"  href="/Home/Create">Create Job</a>
 </div>
@@ -20,6 +20,10 @@ ViewBag.Title = "Home Page";
             <th>Job ID</th>
             <th>Job Title</th>
             <th>Job Description</th>
+            <th>Start Date</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Telephone</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -29,8 +33,12 @@ ViewBag.Title = "Home Page";
             {
                 <tr>
                     <td>@Model.Jobs[i].JobId</td>
-                    <td>@Model.Jobs[i].Title</td>
+                    <td><a href="#">@Model.Jobs[i].Title</a></td>
                     <td>@Model.Jobs[i].Description</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td><a href="/Home/Edit?id=@Model.Jobs[i].JobId">Edit</a>
                    &nbsp; <a href="/Home/Delete?id=@Model.Jobs[i].JobId">Delete</a></td>
                 </tr>

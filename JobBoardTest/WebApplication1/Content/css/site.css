@@ -1,2 +1,16 @@
 ﻿body {
+    margin: 0;
+}
+
+
+.bg-header {
+    background-color: lightblue;
+}
+
+.body-content {
+    padding: 10px;
+}
+
+.underline-text {
+    text-decoration: underline;
 }
