@@ -4,13 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
     @*@Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr"*@
+    
     <link href="~/Content/css/site.css" rel="stylesheet" />
-   <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" />
-   <script src="~/Scripts/jquery.js"></script>
-   <script src="~/Scripts/jquery.dataTables.js"></script>
-   <script type="text/javascript" language="javascript" class="init">
+    <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/css/cookiecuttr.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/jquery.cookiecuttr.js"></script>
+    <script src="~/Scripts/jquery.dataTables.js"></script>
+    <script type="text/javascript" language="javascript" class="init">
         $(document).ready(function () {
             $('#example').dataTable({
                 "pagingType": "full_numbers",
@@ -18,9 +24,23 @@
                 "lengthMenu": [10, 15, 25, 50, 100]
             });
         });
-   </script>
+    </script>
 </head>
 <body>
+
+@if (Request.Cookies["Theme"] != null)
+{//MAKE SURE COOKIE EXIST
+
+    if (Request.Cookies["Theme"].Value == "Dark")
+    {//READ COOKIE VALUE
+        <link href="~/Content/Site_Two.css" rel="stylesheet" />
+    }
+}
+else
+{
+    <link href="~/Content/Site.css" rel="stylesheet" />   //IF COOKIES DOES NOT EXIST LOAD DEFAULT STYLESHEET
+}
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header clear-fix">
@@ -31,7 +51,13 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer></footer>
+        <footer>
+            Copyright &copy; TCG 2015 
+            | <a href="/Home">Home</a> 
+            | <a href="/Home/About">About Us</a> 
+            | <a href="/Home/Accessibility">Accessibility</a> 
+            | <a href="/Home/Cookies">Cookies</a>
+        </footer>
     </div>
     
     @*@Scripts.Render("~/bundles/jquery")
@@ -39,3 +65,9 @@
     @RenderSection("scripts", required: false)*@
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        $.cookieCuttr();
+    });
+</script>
