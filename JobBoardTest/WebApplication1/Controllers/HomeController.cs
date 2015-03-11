@@ -95,7 +95,6 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
         [HttpPost]
         public ActionResult CreateJob()
         {
@@ -107,6 +106,18 @@ namespace WebApplication1.Controllers
             WebApplication1.DataLayer.Job _job = jobRepository.CreateJob(JobTitle,JobDescription);
 
             if (_job != null)
+                ViewBag.Message = "Succeeded";
+            else
+                ViewBag.Message = "Failed";
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            bool bDeleted = jobRepository.DeleteJob(id);
+            if (bDeleted)
                 ViewBag.Message = "Succeeded";
             else
                 ViewBag.Message = "Failed";
