@@ -198,6 +198,7 @@
     <Content Include="Content\css\jquery.dataTables.css" />
     <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\css\site.css" />
     <Content Include="Content\Images\header_logo.jpg" />
     <Content Include="DeploymentScripts\InitialDeployment\JobBoardSchema.sql" />
     <Content Include="favicon.ico" />
