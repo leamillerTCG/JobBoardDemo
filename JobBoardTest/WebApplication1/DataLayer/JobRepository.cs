@@ -25,7 +25,7 @@ namespace WebApplication1.DataLayer
 
         #region Read Methods
 
-        Job GetJob(int jobId)
+        public Job GetJob(int jobId)
         {
             Job result = null;
 
@@ -36,7 +36,7 @@ namespace WebApplication1.DataLayer
             return result;
         }
 
-        List<Job> GetJobListing()
+        public List<Job> GetJobListing()
         {
             List<Job> result = null;
 
