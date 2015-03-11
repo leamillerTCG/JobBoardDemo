@@ -71,10 +71,10 @@ namespace WebApplication1.Controllers
         {
             string JobTitle = Request.Form["JobTitle"];
             string JobDescription = Request.Form["JobDescription"];
-
+            int Jobid =Convert.ToInt32(Request.Form["JobID"]);
             // Save the Job
 
-            bool bSaved = jobRepository.CreateJob(JobTitle, JobDescription);
+            bool bSaved = jobRepository.UpdateJob(JobTitle, JobDescription,Jobid);
 
             if (bSaved)
                 ViewBag.Message = "Succeeded";

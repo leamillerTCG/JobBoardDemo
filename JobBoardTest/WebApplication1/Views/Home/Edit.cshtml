@@ -8,7 +8,7 @@
 @using (Html.BeginForm("EditJob", "Home", FormMethod.Post))
 {
     <h2>Edit Job</h2>
-
+    @Html.Hidden("JobID",@Model.JobInfo.jobid)
     <div class="row">
         <div class="col-md-3">
             Job Title
