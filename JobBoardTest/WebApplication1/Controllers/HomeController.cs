@@ -54,7 +54,17 @@ namespace WebApplication1.Controllers
             return View("CreateJob");
         }
 
+        [HttpGet]
+        public ActionResult Accessibility()
+        {
+            return View("Accessibility");
+        }
 
+        [HttpGet]
+        public ActionResult Cookies()
+        {
+            return View("Cookies");
+        }
 
         [HttpPost]
         public ActionResult CreateJob()
