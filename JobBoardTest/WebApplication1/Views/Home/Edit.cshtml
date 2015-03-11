@@ -1,27 +1,29 @@
-﻿
-
+﻿@using WebApplication1.Models
+@model JobListModel
 @{
-    ViewBag.Title = "Create a Job";
+    ViewBag.Title = "Edit";
+
 }
 
-@using (Html.BeginForm("CreateJob", "Home", FormMethod.Post))
-{ 
-    <h2>Create a Job</h2>
-
+@using (Html.BeginForm("EditJob", "Home", FormMethod.Post))
+{
+    <h2>Edit Job</h2>
+    @Html.Hidden("JobID",@Model.JobInfo.jobid)
     <div class="row">
         <div class="col-md-3">
             Job Title
         </div>
         <div class="col-md-9">
-            <input type="text" name="JobTitle" />
-        </div>
+            @Html.TextBoxFor(m => m.JobInfo.JobTitle, new { Name = "JobTitle" })
+                  </div>
     </div>
     <div class="row">
         <div class="col-md-3">
             Job Description
         </div>
         <div class="col-md-9">
-            <textarea name="JobDescription" rows="6"></textarea>
+            @Html.TextBoxFor(m => m.JobInfo.JobDescription, new { Name = "JobDescription" })
+         
         </div>
     </div>
 
@@ -35,5 +37,4 @@
     </div>
 
 }
-
 

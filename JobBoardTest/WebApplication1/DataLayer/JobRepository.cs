@@ -78,6 +78,29 @@ namespace WebApplication1.DataLayer
 
         #region Update Methods
 
+        public bool UpdateJob(string jobTitle, string jobDescription,int jobID)
+        {
+            Job job = _dbContext.Jobs.Where(j => j.jobid == jobID).SingleOrDefault();
+           
+            try
+            {
+                if (job != null)
+                {
+                    job.JobTitle = jobTitle;
+                    job.JobDescription = jobDescription;
+                   _dbContext.SaveChanges();
+                    return true;
+                }
+               
+            }
+            catch
+            {
+
+            }
+
+            return false;
+        }
+
         #endregion
 
 
