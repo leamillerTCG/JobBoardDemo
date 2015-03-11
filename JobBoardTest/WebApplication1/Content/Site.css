@@ -1,5 +1,4 @@
 ﻿body {
-    padding-top: 120px;
     padding-bottom: 20px;
 }
 
@@ -60,4 +59,5 @@ textarea {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+    text-decoration: none;
 }
