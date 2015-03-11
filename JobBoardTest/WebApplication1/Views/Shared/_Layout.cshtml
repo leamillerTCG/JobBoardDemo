@@ -28,19 +28,6 @@
 </head>
 <body>
 
-@if (Request.Cookies["Theme"] != null)
-{//MAKE SURE COOKIE EXIST
-
-    if (Request.Cookies["Theme"].Value == "Dark")
-    {//READ COOKIE VALUE
-        <link href="~/Content/Site_Two.css" rel="stylesheet" />
-    }
-}
-else
-{
-    <link href="~/Content/Site.css" rel="stylesheet" />   //IF COOKIES DOES NOT EXIST LOAD DEFAULT STYLESHEET
-}
-
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header clear-fix">
@@ -68,6 +55,9 @@ else
 
 <script>
     $(document).ready(function () {
-        $.cookieCuttr()
+        $.cookieCuttr({
+            cookieDeclineButton: true,
+            cookieAnalyticsMessage: "We use cookies, just to track visits to our website, we store no personal details."
+        })
     });
 </script>
