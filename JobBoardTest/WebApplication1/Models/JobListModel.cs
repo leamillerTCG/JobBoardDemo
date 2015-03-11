@@ -8,6 +8,7 @@ namespace WebApplication1.Models
     public class JobListModel
     {
         public List<Job> Jobs { get; set; }
+        public DataLayer.Job JobInfo { get; set; }
     }
 
     public class Job

@@ -30,7 +30,7 @@ ViewBag.Title = "Home Page";
                     <td>@Model.Jobs[i].JobId</td>
                     <td>@Model.Jobs[i].Title</td>
                     <td>@Model.Jobs[i].Description</td>
-                 
+                    <td><a href="/Home/Edit?id=@Model.Jobs[i].JobId">Edit</a></td>
                 </tr>
             }
     </tbody>

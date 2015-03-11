@@ -55,6 +55,35 @@ namespace WebApplication1.Controllers
         }
 
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+
+            JobListModel model = new JobListModel();
+            model.JobInfo = jobRepository.GetJob(id);
+         
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditJob()
+        {
+            string JobTitle = Request.Form["JobTitle"];
+            string JobDescription = Request.Form["JobDescription"];
+
+            // Save the Job
+
+            bool bSaved = jobRepository.CreateJob(JobTitle, JobDescription);
+
+            if (bSaved)
+                ViewBag.Message = "Succeeded";
+            else
+                ViewBag.Message = "Failed";
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
         [HttpPost]
         public ActionResult CreateJob()
