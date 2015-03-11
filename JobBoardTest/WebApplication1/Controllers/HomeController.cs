@@ -11,7 +11,6 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-
             JobListModel model = new JobListModel();
             model.Jobs = new List<Job>
             {
@@ -35,5 +34,25 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+
+        [HttpPost]
+        public ActionResult CreateJob()
+        {
+            string JobTitle = Request.Form["JobTitle"];
+            string JobDescription = Request.Form["JobDescription"];
+            
+            // Save the Job
+            bool bSaved = true;
+            // TODO: Call the repository Method here
+
+            if (bSaved)
+                ViewBag.Message = "Succeeded";
+            else
+                ViewBag.Message = "Failed";
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

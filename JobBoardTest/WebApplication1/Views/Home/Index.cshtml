@@ -1,9 +1,35 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using WebApplication1.Models
+@model JobListModel
+
+
+@{
+ViewBag.Title = "Home Page";
 }
+
 
 <div class="jumbotron">
     <p class="lead">A Sample Home Page.</p>
     <p><a class="btn btn-primary btn-lg">View Jobs &raquo;</a></p>
 </div>
 
+<table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Job ID</th>
+            <th>Job Title</th>
+            <th>Job Description</th>
+        </tr>
+    </thead>
+     <tbody>
+       
+            @for (int i = 0; i < Model.Jobs.Count;i++ )
+            {
+                <tr>
+                    <td>@Model.Jobs[i].JobId</td>
+                    <td>@Model.Jobs[i].Title</td>
+                    <td>@Model.Jobs[i].Description</td>
+                 
+                </tr>
+            }
+    </tbody>
+</table>
