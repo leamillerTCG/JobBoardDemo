@@ -102,7 +102,7 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Delete(int id)
         {
             bool bDeleted = jobRepository.DeleteJob(id);
