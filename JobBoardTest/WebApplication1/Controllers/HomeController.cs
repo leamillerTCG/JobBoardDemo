@@ -48,6 +48,13 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View("CreateJob");
+        }
+
+
 
         [HttpPost]
         public ActionResult CreateJob()
@@ -56,9 +63,9 @@ namespace WebApplication1.Controllers
             string JobDescription = Request.Form["JobDescription"];
             
             // Save the Job
-            bool bSaved = true;
-            // TODO: Call the repository Method here
-
+            
+            bool bSaved = jobRepository.CreateJob(JobTitle,JobDescription);
+         
             if (bSaved)
                 ViewBag.Message = "Succeeded";
             else
