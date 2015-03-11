@@ -51,7 +51,7 @@ namespace WebApplication1.DataLayer
 
         #region Create Methods
 
-        public bool CreateJob(string jobTitle, string jobDescription)
+        public Job CreateJob(string jobTitle, string jobDescription)
         {
             Job job = new Job()
             {
@@ -63,7 +63,35 @@ namespace WebApplication1.DataLayer
             {
                 _dbContext.Jobs.Add(job);
                 _dbContext.SaveChanges();
-                return true;
+                return job;
+            }
+            catch
+            {
+
+            }
+
+            return null;
+        }
+
+        #endregion
+
+
+        #region Update Methods
+
+        public bool UpdateJob(string jobTitle, string jobDescription,int jobID)
+        {
+            Job job = _dbContext.Jobs.Where(j => j.jobid == jobID).SingleOrDefault();
+           
+            try
+            {
+                if (job != null)
+                {
+                    job.JobTitle = jobTitle;
+                    job.JobDescription = jobDescription;
+                   _dbContext.SaveChanges();
+                    return true;
+                }
+               
             }
             catch
             {
@@ -76,12 +104,28 @@ namespace WebApplication1.DataLayer
         #endregion
 
 
-        #region Update Methods
-
-        #endregion
-
-
         #region Delete Methods
+
+        public bool DeleteJob(int jobid)
+        {
+            Job j = (from x in _dbContext.Jobs
+                         where x.jobid == jobid
+                         select x).SingleOrDefault();
+            if (j != null)
+            {
+                try
+                {
+                    _dbContext.Jobs.Remove(j);
+                    _dbContext.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+
+                }
+            }
+            return false;
+        }
 
         #endregion
     }

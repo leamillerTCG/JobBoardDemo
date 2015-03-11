@@ -6,13 +6,16 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @*@Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr"*@
+    <link href="~/Content/css/site.css" rel="stylesheet" />
    <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" />
    <script src="~/Scripts/jquery.js"></script>
    <script src="~/Scripts/jquery.dataTables.js"></script>
    <script type="text/javascript" language="javascript" class="init">
         $(document).ready(function () {
             $('#example').dataTable({
-                "pagingType": "full_numbers"
+                "pagingType": "full_numbers",
+                "pageLength": 15,
+                "lengthMenu": [10, 15, 25, 50, 100]
             });
         });
    </script>

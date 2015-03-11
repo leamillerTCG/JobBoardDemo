@@ -66,6 +66,36 @@ namespace WebApplication1.Controllers
             return View("Cookies");
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+
+            JobListModel model = new JobListModel();
+            model.JobInfo = jobRepository.GetJob(id);
+         
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public ActionResult EditJob()
+        {
+            string JobTitle = Request.Form["JobTitle"];
+            string JobDescription = Request.Form["JobDescription"];
+            int Jobid =Convert.ToInt32(Request.Form["JobID"]);
+            // Save the Job
+
+            bool bSaved = jobRepository.UpdateJob(JobTitle, JobDescription,Jobid);
+
+            if (bSaved)
+                ViewBag.Message = "Succeeded";
+            else
+                ViewBag.Message = "Failed";
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
         [HttpPost]
         public ActionResult CreateJob()
         {
@@ -74,9 +104,9 @@ namespace WebApplication1.Controllers
             
             // Save the Job
             
-            bool bSaved = jobRepository.CreateJob(JobTitle,JobDescription);
-         
-            if (bSaved)
+            WebApplication1.DataLayer.Job _job = jobRepository.CreateJob(JobTitle,JobDescription);
+
+            if (_job != null)
                 ViewBag.Message = "Succeeded";
             else
                 ViewBag.Message = "Failed";
